@@ -7,7 +7,7 @@ const App = () => {
     return (
         <div>
             <V1/>
-            {/* <SimpleSlider/> */}
+            
         </div>
     );
 };
