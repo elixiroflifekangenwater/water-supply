@@ -11,6 +11,7 @@ import cer2 from './assets/cer2.png';
 import cer3 from './assets/cer3.jpeg';
 import cer4 from './assets/cer4.jpeg';
 import cer5 from './assets/cer5.png';
+import SimpleSlider from "./componensts/HomeSlider";
 
 const V1 = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -247,7 +248,7 @@ const V1 = () => {
 
       <main>
         {/* Hero Section */}
-        <section id="home" className="pt-20 min-h-screen bg-white flex items-center justify-center">
+        {/* <section id="home" className="pt-20 min-h-screen bg-white flex items-center justify-center">
           <div className="container mx-auto px-4 py-16">
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-800">
@@ -263,13 +264,14 @@ const V1 = () => {
               </button>
             </div>
           </div>
-        </section>
+        </section> */}
+        <SimpleSlider/>
 
         {/* About Section */}
         <section id="about" className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center">
-              <div className="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+              <div className="md:w-1/2 mb-10 md:mb-0 md:pr-10 pl-5">
                 <h2 className="text-3xl font-bold mb-6 text-gray-800">About Kangen Water</h2>
                 <p className="text-gray-600 mb-4">
                   Kangen Water is alkaline, antioxidant-rich, and micro-clustered water produced by Enagic's ionization process.
