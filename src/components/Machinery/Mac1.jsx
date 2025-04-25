@@ -1,5 +1,5 @@
 import React from "react";
-import Mac1 from "../assets/Mac1.jpg"; 
+import Mac1Img from "../../assets/Mac1.jpg"; 
 
 const Mac1 = () => {
   return (
@@ -8,7 +8,7 @@ const Mac1 = () => {
         Kangen Water Machine Leveluk SD 501
       </h2>
       <img
-        src={Mac1}
+        src={Mac1Img}
         alt="Kangen Water Machine Leveluk SD 501"
         className="w-full h-auto object-cover rounded-xl mb-6"
       />

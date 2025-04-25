@@ -68,8 +68,8 @@ const sliderStyles = `
       padding-bottom: 24px;
     }
     .slider-image {
-      height: 30vh;
-      max-height: 30vh;
+      height: 45vh;
+      max-height: 45vh;
     }
   }
 `;

@@ -1,5 +1,5 @@
 import React from "react";
-import Mac4 from "../assets/Mac4.jpg";
+import Mac4Img from "../../assets/Mac4.jpg";
 
 const Mac4 = () => {
   return (
@@ -9,7 +9,7 @@ const Mac4 = () => {
       </h1>
 
       <img
-        src={Mac4}
+        src={Mac4Img}
         alt="Leveluk JRIV Machine"
         className="w-full max-h-[400px] object-contain mb-6 rounded-lg shadow-md"
       />

@@ -11,7 +11,7 @@ import cer2 from './assets/cer2.png';
 import cer3 from './assets/cer3.jpeg';
 import cer4 from './assets/cer4.jpeg';
 import cer5 from './assets/cer5.png';
-import SimpleSlider from "./componensts/HomeSlider";
+import SimpleSlider from "./components/HomeSlider";
 
 const V1 = () => {
   const [scrolled, setScrolled] = useState(false);

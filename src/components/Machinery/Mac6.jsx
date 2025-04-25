@@ -1,5 +1,5 @@
 import React from "react";
-import Mac6 from "../assets/Mac6.jpg"; // Make sure to place your Anespa DX image here
+import Mac6Img from "../../assets/Mac6.jpg"; // Make sure to place your Anespa DX image here
 
 const Mac6 = () => {
   return (
@@ -9,7 +9,7 @@ const Mac6 = () => {
       </h1>
 
       <img
-        src={Mac6}
+        src={Mac6Img}
         alt="Anespa DX"
         className="w-full max-h-[400px] object-contain mb-6 rounded-lg shadow-md"
       />

@@ -1,5 +1,5 @@
 import React from "react";
-import Mac3Image from "../assets/Mac3.jpg";
+import Mac3Image from "../../assets/Mac3.jpg";
 
 const Mac3 = () => {
   return (
