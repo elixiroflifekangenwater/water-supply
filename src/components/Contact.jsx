@@ -19,8 +19,69 @@ const Contact = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handleNumberChange = (e) => {
+    const value = e.target.value;
+    if (/^\d*$/.test(value)) {
+      setForm({ ...form, contactNumber: value });
+    } else {
+      toast.error('Please enter numeric value only!', {
+        position: 'top-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        pauseOnHover: false,
+        draggable: true,
+        theme: 'colored',
+      });
+    }
+  };
+
+  const validateForm = () => {
+    if (!form.name.trim()) {
+      toast.error('Please enter your name!', toastOptions);
+      return false;
+    }
+    if (!form.email.trim()) {
+      toast.error('Please enter your email!', toastOptions);
+      return false;
+    }
+    // Simple email format check
+    if (!/^\S+@\S+\.\S+$/.test(form.email)) {
+      toast.error('Please enter a valid email address!', toastOptions);
+      return false;
+    }
+    if (!form.contactNumber.trim()) {
+      toast.error('Please enter your contact number!', toastOptions);
+      return false;
+    }
+    if (!/^\d{10}$/.test(form.contactNumber)) {
+      toast.error('Contact number must be 10 digits!', toastOptions);
+      return false;
+    }
+    if (!form.address.trim()) {
+      toast.error('Please enter your address!', toastOptions);
+      return false;
+    }
+    if (!form.message.trim()) {
+      toast.error('Please enter your message!', toastOptions);
+      return false;
+    }
+    return true;
+  };
+
+  const toastOptions = {
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "colored"
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!validateForm()) return;
     setSubmitting(true);
     const formData = new FormData();
     formData.append("entry.98504594", form.name);  // Name
@@ -36,28 +97,10 @@ const Contact = () => {
         mode: "no-cors",
         body: formData,
       });
-      toast.success("Your message has been sent! Our team will contact you shortly.", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+      toast.success("Our Team Will Contact You Shortly", toastOptions);
       setForm({ name: '', email: '', contactNumber: '', address: '', query: '', message: '' });
     } catch (error) {
-      toast.error("Failed to send message. Please try again later.", {
-        position: "top-center",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+      toast.error("Failed to send message. Please try again later.", toastOptions);
     }
     setSubmitting(false);
   };
@@ -101,7 +144,7 @@ const Contact = () => {
                 id="contactNumber"
                 name="contactNumber"
                 value={form.contactNumber}
-                onChange={handleChange}
+                onChange={handleNumberChange}
                 maxLength={10}
                 className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 placeholder-gray-400 focus:ring-2 focus:ring-blue-300 focus:border-blue-300 text-sm transition-all duration-300 hover:shadow-md hover:scale-105 focus:scale-100"
                 placeholder="Your Contact Number"
