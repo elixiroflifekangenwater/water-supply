@@ -8,7 +8,7 @@ import ContactForm from "./components/ContactForm";
 import Footer from "./components/Footer";
 import { scrollToSection, scrollToContact } from "./utils/scroll";
 import { handleNumberChange as validateNumberChange } from "./utils/validation";
-
+import Contact from "./components/Contact";
 const HomePage = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -59,7 +59,8 @@ const HomePage = () => {
         <SimpleSlider />
         <About scrollToContact={scrollToContact} />
         <Services scrollToContact={scrollToContact} />
-        <ContactForm number={number} handleNumberChange={handleNumberChange} />
+        {/* <ContactForm number={number} handleNumberChange={handleNumberChange} /> */}
+        <Contact />
       </main>
       <Footer />
     </div>
