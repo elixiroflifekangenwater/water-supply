@@ -8,6 +8,9 @@ const Contact = () => {
   const [form, setForm] = useState({
     name: '',
     email: '',
+    contactNumber: '',
+    address: '',
+    query: '',
     message: ''
   });
   const [submitting, setSubmitting] = useState(false);
@@ -22,6 +25,9 @@ const Contact = () => {
     const formData = new FormData();
     formData.append("entry.98504594", form.name);  // Name
     formData.append("entry.690186531", form.email); // Email
+    formData.append("entry.1369128842", form.contactNumber); // Contact Number
+    formData.append("entry.864243374", form.address); // Address
+    // formData.append("entry.QUERY_ID", form.query); // Query (uncomment and update if you add this field)
     formData.append("entry.2011894093", form.message); // Message
 
     try {
@@ -40,7 +46,7 @@ const Contact = () => {
         progress: undefined,
         theme: "colored",
       });
-      setForm({ name: '', email: '', message: '' });
+      setForm({ name: '', email: '', contactNumber: '', address: '', query: '', message: '' });
     } catch (error) {
       toast.error("Failed to send message. Please try again later.", {
         position: "top-center",
@@ -88,6 +94,46 @@ const Contact = () => {
                 required
               />
             </div>
+            <div className="relative group">
+              <label htmlFor="contactNumber" className="block text-sm font-medium animate-pulse text-[#4DB6E2] mb-1 transition-transform duration-200 group-hover:-translate-y-1">Contact Number</label>
+              <input
+                type="tel"
+                id="contactNumber"
+                name="contactNumber"
+                value={form.contactNumber}
+                onChange={handleChange}
+                maxLength={10}
+                className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 placeholder-gray-400 focus:ring-2 focus:ring-blue-300 focus:border-blue-300 text-sm transition-all duration-300 hover:shadow-md hover:scale-105 focus:scale-100"
+                placeholder="Your Contact Number"
+                required
+              />
+            </div>
+            <div className="relative group">
+              <label htmlFor="address" className="block text-sm font-medium animate-pulse text-[#4DB6E2] mb-1 transition-transform duration-200 group-hover:-translate-y-1">Address</label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                value={form.address}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 placeholder-gray-400 focus:ring-2 focus:ring-blue-300 focus:border-blue-300 text-sm transition-all duration-300 hover:shadow-md hover:scale-105 focus:scale-100"
+                placeholder="Your Address"
+                required
+              />
+            </div>
+            {/* <div className="md:col-span-2 relative group">
+              <label htmlFor="query" className="block text-sm font-medium animate-pulse text-[#4DB6E2] mb-1 transition-transform duration-200 group-hover:-translate-y-1">Query</label>
+              <input
+                type="text"
+                id="query"
+                name="query"
+                value={form.query}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 placeholder-gray-400 focus:ring-2 focus:ring-blue-300 focus:border-blue-300 text-sm transition-all duration-300 hover:shadow-md hover:scale-105 focus:scale-100"
+                placeholder="Your Query"
+                required
+              />
+            </div> */}
             <div className="md:col-span-2 relative group">
               <label htmlFor="message" className="block text-sm font-medium animate-pulse text-[#4DB6E2] mb-1 transition-transform duration-200 group-hover:-translate-y-1">Message</label>
               <textarea
