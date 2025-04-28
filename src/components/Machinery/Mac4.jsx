@@ -1,62 +1,156 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 import Mac4Img from "../../assets/Mac4.jpg";
 
 const Mac4 = () => {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    controls.start("visible");
+  }, [controls]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { y: -200, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+        duration: 0.8
+      }
+    }
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6 }
+    }
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay: 1.5 }
+    }
+  };
+
   return (
-    <div className="max-w-5xl mx-auto p-6 text-gray-800">
-      <h1 className="text-3xl font-bold mb-4 text-center">
+    <motion.div
+      className="bg-white p-8 rounded-2xl shadow-lg max-w-5xl mx-auto mt-20 mb-10"
+      initial="hidden"
+      animate={controls}
+      variants={containerVariants}
+    >
+      <motion.h2
+        variants={textVariants}
+        className="text-3xl font-bold text-center mb-6 text-[#4DB6E2]"
+      >
         Kangen Water Machine Leveluk JRIV
-      </h1>
+      </motion.h2>
 
-      <img
-        src={Mac4Img}
-        alt="Leveluk JRIV Machine"
-        className="w-full max-h-[400px] object-contain mb-6 rounded-lg shadow-md"
-      />
+      <motion.div
+        variants={imageVariants}
+        whileHover={{ scale: 1.05 }}
+        transition={{ type: "spring", stiffness: 300 }}
+        className="overflow-hidden rounded-xl mb-8 shadow-md"
+      >
+        <img
+          src={Mac4Img}
+          alt="Leveluk JRIV Machine"
+          className="w-full h-auto object-cover hover:brightness-110 transition duration-300"
+        />
+      </motion.div>
 
-      <p className="mb-4 text-lg">
+      <motion.p
+        variants={textVariants}
+        className="text-gray-700 text-lg mb-6 leading-relaxed"
+      >
         Are you looking for an affordable way to experience the benefits of high-quality ionized water?
         The Leveluk JRIV (JR4) is designed for individuals and small households who want a convenient and efficient
         water solution.
-      </p>
+      </motion.p>
 
-      <p className="mb-4 text-lg">
-        With its advanced water filtration and ionization technology, the JRIV produces 5 types of functional water
-        to enhance your daily routine—from drinking and cooking to cleaning and skincare.
-      </p>
+      <motion.div variants={textVariants}>
+        <h3 className="text-2xl font-semibold text-gray-800 mb-4">Why the Leveluk JRIV is a Smart Investment</h3>
+        <motion.ul
+          className="list-disc list-inside text-gray-700 space-y-3 mb-8"
+          variants={containerVariants}
+        >
+          {["<strong>Affordable Without Compromising Quality:</strong> One of the most budget-friendly Kangen machines, offering premium water without the high-end price.",
+            "<strong>Compact & Energy-Efficient for Small Households:</strong> Perfect for singles and couples, the JRIV saves space and uses less power than larger models.",
+            "<strong>Five Types of Functional Water for Everyday Use:</strong>",
+            "<strong>User-Friendly & Low Maintenance:</strong> Comes with a simple LCD control panel, automatic cleaning system, and filter replacement alerts for hassle-free use."]
+            .map((item, index) => (
+              <motion.li
+                key={index}
+                variants={{
+                  hidden: { opacity: 0, x: -10 },
+                  visible: {
+                    opacity: 1,
+                    x: 0,
+                    transition: { delay: index * 0.1 + 0.5 }
+                  }
+                }}
+                dangerouslySetInnerHTML={{ __html: item }}
+              />
+            ))}
+        </motion.ul>
+      </motion.div>
 
-      <p className="mb-4 text-lg">
-        This compact yet powerful unit delivers exceptional water quality at a lower cost, making it a great entry-level
-        choice for those new to ionized water.
-      </p>
+      <motion.div variants={textVariants}>
+        <motion.ul
+          className="list-disc list-inside text-gray-700 space-y-3"
+          variants={containerVariants}
+        >
+          {["<strong>Kangen Water (pH 8.5–9.5):</strong> Ideal for hydration, brewing tea, and cooking.",
+            "<strong>Clean Water (pH 7.0):</strong> Perfect for baby formula and supplement intake.",
+            "<strong>Beauty Water (pH 6.0):</strong> Natural toner and hair rinse.",
+            "<strong>Strong Kangen Water (pH 11.5):</strong> Cleans fruits and vegetables thoroughly.",
+            "<strong>Strong Acidic Water (pH 2.5):</strong> Great for natural surface sanitization."]
+            .map((item, index) => (
+              <motion.li
+                key={index}
+                variants={{
+                  hidden: { opacity: 0, x: -10 },
+                  visible: {
+                    opacity: 1,
+                    x: 0,
+                    transition: { delay: index * 0.1 + 0.8 }
+                  }
+                }}
+                dangerouslySetInnerHTML={{ __html: item }}
+              />
+            ))}
+        </motion.ul>
+      </motion.div>
 
-      <h2 className="text-2xl font-semibold mt-6 mb-2">Why the Leveluk JRIV is a Smart Investment</h2>
-
-      <ul className="list-disc pl-6 space-y-3 text-lg">
-        <li>
-          <strong>Affordable Without Compromising Quality:</strong> One of the most budget-friendly Kangen machines,
-          offering premium water without the high-end price.
-        </li>
-        <li>
-          <strong>Compact & Energy-Efficient for Small Households:</strong> Perfect for singles and couples,
-          the JRIV saves space and uses less power than larger models.
-        </li>
-        <li>
-          <strong>Five Types of Functional Water for Everyday Use:</strong>
-          <ul className="list-disc pl-6 mt-2 space-y-1">
-            <li><strong>Kangen Water (pH 8.5–9.5):</strong> Ideal for hydration, brewing tea, and cooking.</li>
-            <li><strong>Clean Water (pH 7.0):</strong> Perfect for baby formula and supplement intake.</li>
-            <li><strong>Beauty Water (pH 6.0):</strong> Natural toner and hair rinse.</li>
-            <li><strong>Strong Kangen Water (pH 11.5):</strong> Cleans fruits and vegetables thoroughly.</li>
-            <li><strong>Strong Acidic Water (pH 2.5):</strong> Great for natural surface sanitization.</li>
-          </ul>
-        </li>
-        <li>
-          <strong>User-Friendly & Low Maintenance:</strong> Comes with a simple LCD control panel, automatic cleaning system,
-          and filter replacement alerts for hassle-free use.
-        </li>
-      </ul>
-    </div>
+      <motion.div
+        variants={buttonVariants}
+        className="flex justify-center mt-10"
+      >
+        <button className="bg-[#4DB6E2] hover:bg-[#3da7d5] text-white font-semibold py-3 px-8 rounded-full shadow-md transition transform hover:scale-105">
+          Contact Us
+        </button>
+      </motion.div>
+    </motion.div>
   );
 };
 

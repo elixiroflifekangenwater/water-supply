@@ -1,54 +1,160 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 import Mac5Img from "../../assets/Mac5.jpg";
 
 const Mac5 = () => {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    controls.start("visible");
+  }, [controls]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const imageVariants = {
+    hidden: { y: -200, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100,
+        duration: 0.8
+      }
+    }
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6 }
+    }
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, delay: 1.5 }
+    }
+  };
+
   return (
-    <div className="max-w-5xl mx-auto p-6 text-gray-800">
-      <h1 className="text-3xl font-bold mb-4 text-center">
+    <motion.div
+      className="bg-white p-8 rounded-2xl shadow-lg max-w-4xl mx-auto mt-20 mb-10"
+      initial="hidden"
+      animate={controls}
+      variants={containerVariants}
+    >
+      <motion.h2
+        variants={textVariants}
+        className="text-3xl font-bold text-center mb-6 text-[#4DB6E2]"
+      >
         Kangen Water Machine Leveluk Super 501
-      </h1>
+      </motion.h2>
 
-      <img
-        src={Mac5Img}
-        alt="Leveluk Super 501 Machine"
-        className="w-full max-h-[400px] object-contain mb-6 rounded-lg shadow-md"
-      />
+      <motion.div
+        variants={imageVariants}
+        whileHover={{ scale: 1.05 }}
+        transition={{ type: "spring", stiffness: 300 }}
+        className="overflow-hidden rounded-xl mb-8 shadow-md"
+      >
+        <img
+          src={Mac5Img}
+          alt="Leveluk Super 501 Machine"
+          className="w-full h-auto object-cover hover:brightness-110 transition duration-300"
+        />
+      </motion.div>
 
-      <p className="mb-4 text-lg">
-        The Leveluk Super 501 is the **Powerhouse Kangen Water Ionizer** designed for high-demand environments.
+      <motion.p
+        variants={textVariants}
+        className="text-gray-700 text-lg mb-6 leading-relaxed"
+      >
+        The Leveluk Super 501 is the <strong>Powerhouse Kangen Water Ionizer</strong> designed for high-demand environments.
         Whether you're running a café, restaurant, clinic, or have a large family, this machine delivers 
         exceptional performance and capacity without compromising quality.
-      </p>
+      </motion.p>
 
-      <p className="mb-4 text-lg">
-        Featuring a dual system of <strong>12 total electrode plates</strong>, this unit produces five distinct 
-        types of water to meet all your hydration, cleaning, and skincare needs. It's the ideal solution 
-        for those who require consistent, high-volume water ionization.
-      </p>
+      <motion.div variants={textVariants}>
+        <h3 className="text-2xl font-semibold text-gray-800 mb-4">Why the Leveluk Super 501 is the Perfect Water Solution:</h3>
+        <motion.ul
+          className="list-disc list-inside text-gray-700 space-y-3 mb-8"
+          variants={containerVariants}
+        >
+          {["<strong>Unmatched Water Production Capacity:</strong> Generates up to 7 liters per minute, making it perfect for businesses and large households.",
+            "<strong>Advanced Dual Plate System:</strong> Combines 7 plates for Strong Kangen/Acidic water and 5 for regular Kangen and Beauty water types.",
+            "<strong>Five Types of Water:</strong>",
+            "<strong>Efficient Twin Hose System:</strong> Easily switch between water types and fill large containers quickly.",
+            "<strong>User-Friendly LCD Display:</strong> Simple push-button operation and large screen for ease of use.",
+            "<strong>Automatic Cleaning System:</strong> Reduces manual maintenance.",
+            "<strong>Smart Filter Technology:</strong> Notifies you when it’s time to replace the filter.",
+            "<strong>Compact Yet Powerful:</strong> Fits neatly into kitchens or business environments while delivering robust features."]
+            .map((item, index) => (
+              <motion.li
+                key={index}
+                variants={{
+                  hidden: { opacity: 0, x: -10 },
+                  visible: {
+                    opacity: 1,
+                    x: 0,
+                    transition: { delay: index * 0.1 + 0.5 }
+                  }
+                }}
+                dangerouslySetInnerHTML={{ __html: item }}
+              />
+            ))}
+        </motion.ul>
+      </motion.div>
 
-      <h2 className="text-2xl font-semibold mt-6 mb-2">
-        Why the Leveluk Super 501 is the Perfect Water Solution:
-      </h2>
+      <motion.div variants={textVariants}>
+        <motion.ul
+          className="list-disc list-inside text-gray-700 space-y-3"
+          variants={containerVariants}
+        >
+          {["<strong>Kangen Water (pH 8.5–9.5):</strong> Supports optimal hydration.",
+            "<strong>Clean Water (pH 7.0):</strong> Safe for baby formula and meds.",
+            "<strong>Beauty Water (pH 6.0):</strong> Enhances skincare and natural glow.",
+            "<strong>Strong Acidic Water (pH 2.5):</strong> Perfect for chemical-free sanitation.",
+            "<strong>Strong Kangen Water (pH 11.5):</strong> Ideal for cleaning and detoxifying produce."]
+            .map((item, index) => (
+              <motion.li
+                key={index}
+                variants={{
+                  hidden: { opacity: 0, x: -10 },
+                  visible: {
+                    opacity: 1,
+                    x: 0,
+                    transition: { delay: index * 0.1 + 0.8 }
+                  }
+                }}
+                dangerouslySetInnerHTML={{ __html: item }}
+              />
+            ))}
+        </motion.ul>
+      </motion.div>
 
-      <ul className="list-disc pl-6 space-y-3 text-lg">
-        <li><strong>Unmatched Water Production Capacity:</strong> Generates up to 7 liters per minute, making it perfect for businesses and large households.</li>
-        <li><strong>Advanced Dual Plate System:</strong> Combines 7 plates for Strong Kangen/Acidic water and 5 for regular Kangen and Beauty water types.</li>
-        <li><strong>Five Types of Water:</strong>
-          <ul className="list-disc pl-6 mt-1 space-y-1">
-            <li><strong>Kangen Water (pH 8.5–9.5):</strong> Supports optimal hydration.</li>
-            <li><strong>Clean Water (pH 7.0):</strong> Safe for baby formula and meds.</li>
-            <li><strong>Beauty Water (pH 6.0):</strong> Enhances skincare and natural glow.</li>
-            <li><strong>Strong Acidic Water (pH 2.5):</strong> Perfect for chemical-free sanitation.</li>
-            <li><strong>Strong Kangen Water (pH 11.5):</strong> Ideal for cleaning and detoxifying produce.</li>
-          </ul>
-        </li>
-        <li><strong>Efficient Twin Hose System:</strong> Easily switch between water types and fill large containers quickly.</li>
-        <li><strong>User-Friendly LCD Display:</strong> Simple push-button operation and large screen for ease of use.</li>
-        <li><strong>Automatic Cleaning System:</strong> Reduces manual maintenance.</li>
-        <li><strong>Smart Filter Technology:</strong> Notifies you when it’s time to replace the filter.</li>
-        <li><strong>Compact Yet Powerful:</strong> Fits neatly into kitchens or business environments while delivering robust features.</li>
-      </ul>
-    </div>
+      <motion.div
+        variants={buttonVariants}
+        className="flex justify-center mt-10"
+      >
+        <button className="bg-[#4DB6E2] hover:bg-[#3da7d5] text-white font-semibold py-3 px-8 rounded-full shadow-md transition transform hover:scale-105">
+          Contact Us
+        </button>
+      </motion.div>
+    </motion.div>
   );
 };
 
