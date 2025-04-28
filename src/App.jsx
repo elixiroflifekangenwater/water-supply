@@ -50,6 +50,7 @@ const App = () => {
                 toggleMobileMenu={toggleMobileMenu}
             />
             <Routes>
+                <Route path="/" element={<HomePage />} />
                 <Route path="/home" element={<HomePage />} />
                 <Route path="/distributor" element={<Distributor />} />
                 <Route path="/machinery/sd501" element={<Mac1 />} />
