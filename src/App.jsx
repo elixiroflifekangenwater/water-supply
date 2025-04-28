@@ -10,7 +10,7 @@ import Mac3 from "./components/Machinery/Mac3";
 import Mac4 from "./components/Machinery/Mac4";
 import Mac5 from "./components/Machinery/Mac5";
 import Mac6 from "./components/Machinery/Mac6";
-
+import Distributor from "./pages/Distributor";
 const App = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -50,7 +50,8 @@ const App = () => {
                 toggleMobileMenu={toggleMobileMenu}
             />
             <Routes>
-                <Route path="/" element={<HomePage />} />
+                <Route path="/home" element={<HomePage />} />
+                <Route path="/distributor" element={<Distributor />} />
                 <Route path="/machinery/sd501" element={<Mac1 />} />
                 <Route path="/machinery/sd501platinum" element={<Mac2 />} />
                 <Route path="/machinery/k8" element={<Mac3 />} />
