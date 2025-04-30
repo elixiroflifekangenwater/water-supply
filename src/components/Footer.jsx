@@ -13,7 +13,9 @@ const Footer = () => (
             <span className="text-white font-medium text-lg">Enagic Global Distributor</span>
           </div>
           <p className="text-white text-sm">
-            Distributing premium Kangen Water machines worldwide for a healthier and more energized lifestyle.
+          Authorized Independent Distributor for
+Enagic India Kangen Water Pvt Ltd.
+Bengaluru.
           </p>
         </div>
         {/* Contact Info */}
@@ -23,7 +25,7 @@ const Footer = () => (
             📧 Email: <a href="mailto:info@enagicglobal.com" className="underline text-white">info@enagicglobal.com</a>
           </p>
           <p className="text-white text-sm">
-            📞 Phone: <a href="tel:+911234567890" className="underline text-white">+91 12345 67890</a>
+            📞 Phone: <a href="tel:+91 8369532119" className="underline text-white">+91 8369532119</a>
           </p>
         </div>
         {/* Demo Message */}

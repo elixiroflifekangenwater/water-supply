@@ -89,7 +89,7 @@ const V1 = () => {
             <div className={`transition-transform duration-300 ${scrolled ? "scale-85" : "scale-100"}`}>
               <div className="flex items-center">
                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-3">
-                  <span className="text-xl font-bold text-[#4DB6E2]">IE</span>
+                  <span className="text-xl font-bold text-[#4db6e2]">IE</span>
                 </div>
                 <span className="text-white font-medium text-lg leading-tight">
                   The Elixir of Life<br />Kangen Water
