@@ -442,7 +442,7 @@ const Distributor = () => {
           key={testimonial.name}
           className="bg-[#f9f9fa] rounded-lg shadow-md overflow-hidden"
           whileHover={{ y: -10 }}
-          transition={{ duration: 0.3 }}
+         
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 * index, duration: 0.8 }}
