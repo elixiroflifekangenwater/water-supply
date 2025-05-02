@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Mac2Img from "../../assets/Mac2.jpeg";
 import Modal from "../modal";
-import ContactForm from "../ContactForm";
+import Contact from "../Contact";
 const Mac2 = () => {
   const controls = useAnimation();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -189,7 +189,7 @@ const Mac2 = () => {
           <span className='text-xl font-semibold'>×</span>
         </button>
         {/* <ContactForm query="sd501" /> */}
-        <ContactForm />
+        <Contact query="sd501-platinum" />
       </Modal>
       </motion.div>
     </motion.div>

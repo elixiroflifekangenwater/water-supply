@@ -4,13 +4,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/u/0/d/1ll7AUX9VraiJ9S89LtKUJWV4NSZho5hdNay3NUlfCo0/formResponse";
 
-const Contact = () => {
+const Contact = ({ query = 'enquiry' }) => {
   const [form, setForm] = useState({
     name: '',
     email: '',
     contactNumber: '',
     address: '',
-    query: '',
+    query: query,
     message: ''
   });
   const [submitting, setSubmitting] = useState(false);
@@ -88,7 +88,7 @@ const Contact = () => {
     formData.append("entry.690186531", form.email); // Email
     formData.append("entry.1369128842", form.contactNumber); // Contact Number
     formData.append("entry.864243374", form.address); // Address
-    // formData.append("entry.QUERY_ID", form.query); // Query (uncomment and update if you add this field)
+    formData.append("entry.545556729", form.query); // Query
     formData.append("entry.2011894093", form.message); // Message
 
     try {

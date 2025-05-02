@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Mac6Img from "../../assets/Mac6.jpg";
 import Modal from "../modal";
-import ContactForm from "../ContactForm";
+import Contact from "../Contact";
 const Mac6 = () => {
   const controls = useAnimation();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -166,7 +166,7 @@ const Mac6 = () => {
         <button className='bg-gradient-to-r from-[#4DB6E2] to-blue-500 text-white hover:from-blue-600 hover:to-blue-700 transition-all duration-300 p-4 rounded-full hover:scale-110 shadow-lg active:scale-95 flex items-center justify-center absolute top-4 right-4 ring-2 ring-white/20 hover:ring-blue-300/50' onClick={onClose}>
           <span className='text-xl font-semibold'>×</span></button>
           {/* <ContactForm query="sd501" /> */}
-          <ContactForm />
+          <Contact query="anespa-dx" />
         </Modal>
       </motion.div>
     </motion.div>
