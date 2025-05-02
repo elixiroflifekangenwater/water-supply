@@ -107,20 +107,20 @@ const Distributor = () => {
         <main className="bg-[#f9f9fa] font-sans text-blue-800">
             {/* Hero Section */}
             <motion.section
-                className="relative min-h-[500px] flex flex-col justify-end mt-15"
-                
+                className="relative min-h-[500px] flex flex-col justify-end mt-1"
             >
                 {/* Sticky Background Image */}
-                <div className="fixed top-0 left-0 w-full h-screen -z-10">
+                {/* <div className="fixed top-0 left-0 w-full h-screen -z-10">
                     <img
                         src={Dis}
                         alt="Distributor"
                         className="w-full h-full object-cover"
+                        loading="lazy"
                     />
-                </div>
+                </div> */}
 
                 {/* Gradient Overlay and Text Content */}
-                <div className="bg-gradient-to-b from-white/70 via-white/60 to-transparent pt-12 pb-10 px-4 md:px-16">
+                <div className="bg-gradient-to-b from-white/70 via-white/60 to-transparent  pb-10 px-4 md:px-16">
                     <motion.h1 
                         className="text-3xl md:text-5xl font-bold mb-4 uppercase tracking-wide max-w-4xl"
                         initial={{ y: 50, opacity: 0 }}
