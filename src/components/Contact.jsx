@@ -78,12 +78,12 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
     setSubmitting(true);
 
     const formData = new FormData();
-    formData.append("entry.98504594", form.name);           // Name
-    formData.append("entry.690186531", form.email);         // Email
+    formData.append("entry.98504594", form.name);            // Name
+    formData.append("entry.690186531", form.email);          // Email
     formData.append("entry.1369128842", form.contactNumber); // Contact Number
-    formData.append("entry.864243374", form.address);       // Address
-    formData.append("entry.545556729", form.query);         // Query
-    formData.append("entry.2011894093", form.message);      // Message
+    formData.append("entry.864243374", form.address);        // Address
+    formData.append("entry.545556729", form.query);          // Query
+    formData.append("entry.2011894093", form.message);       // Message
 
     try {
       await fetch(GOOGLE_FORM_ACTION, {
@@ -92,7 +92,7 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
         body: formData,
       });
       toast.success("Our Team Will Contact You Shortly", toastOptions);
-      setForm({ name: '', email: '', contactNumber: '', address: '', query: '', message: '' });
+      setForm({ name: '', email: '', contactNumber: '', address: '', query: query, message: '' });
       if (onClose) onClose();
     } catch (error) {
       toast.error("Failed to send message. Please try again later.", toastOptions);
@@ -101,56 +101,41 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
   };
 
   const formContent = (
-<<<<<<< HEAD
     <div className="max-w-full md:max-w-2xl mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full">
-  <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 animate-pulse text-[#4DB6E2] transition-all duration-500">
-    Contact Us
-  </h2>
-  <form className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6" onSubmit={handleSubmit}>
-    <div className="group">
-      <label htmlFor="name" className="block text-sm font-medium text-[#4DB6E2] mb-1">Name</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        value={form.name}
-        onChange={handleChange}
-        className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
-        placeholder="Your Name"
-        required
-      />
-=======
-    <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg relative z-10 w-full">
-      <h2 className="text-4xl font-bold text-center mb-12 animate-pulse text-[#4DB6E2] transition-all duration-500">Contact Us</h2>
-      <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleSubmit}>
-        <div className="relative group">
-          <label htmlFor="name" className="block text-sm font-medium animate-pulse text-[#4DB6E2] mb-1">Name</label>
+      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 animate-pulse text-[#4DB6E2] transition-all duration-500">
+        Contact Us
+      </h2>
+      <form className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6" onSubmit={handleSubmit}>
+        <div className="group">
+          <label htmlFor="name" className="block text-sm font-medium text-[#4DB6E2] mb-1">Name</label>
           <input
             type="text"
             id="name"
             name="name"
             value={form.name}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-105"
+            className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
             placeholder="Your Name"
             required
           />
         </div>
-        <div className="relative group">
-          <label htmlFor="email" className="block text-sm font-medium animate-pulse text-[#4DB6E2] mb-1">Email</label>
+
+        <div className="group">
+          <label htmlFor="email" className="block text-sm font-medium text-[#4DB6E2] mb-1">Email</label>
           <input
             type="email"
             id="email"
             name="email"
             value={form.email}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-105"
+            className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
             placeholder="Your Email"
             required
           />
         </div>
-        <div className="relative group">
-          <label htmlFor="contactNumber" className="block text-sm font-medium animate-pulse text-[#4DB6E2] mb-1">Contact Number</label>
+
+        <div className="group">
+          <label htmlFor="contactNumber" className="block text-sm font-medium text-[#4DB6E2] mb-1">Contact Number</label>
           <input
             type="tel"
             id="contactNumber"
@@ -158,38 +143,41 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
             value={form.contactNumber}
             onChange={handleNumberChange}
             maxLength={10}
-            className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-105"
+            className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
             placeholder="Your Contact Number"
             required
           />
         </div>
-        <div className="relative group">
-          <label htmlFor="address" className="block text-sm font-medium animate-pulse text-[#4DB6E2] mb-1">Address</label>
+
+        <div className="group">
+          <label htmlFor="address" className="block text-sm font-medium text-[#4DB6E2] mb-1">Address</label>
           <input
             type="text"
             id="address"
             name="address"
             value={form.address}
             onChange={handleChange}
-            className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-105"
+            className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
             placeholder="Your Address"
             required
           />
         </div>
-        <div className="md:col-span-2 relative group">
-          <label htmlFor="message" className="block text-sm font-medium animate-pulse text-[#4DB6E2] mb-1">Message</label>
+
+        <div className="sm:col-span-2 group">
+          <label htmlFor="message" className="block text-sm font-medium text-[#4DB6E2] mb-1">Message</label>
           <textarea
             id="message"
             name="message"
             value={form.message}
             onChange={handleChange}
             rows={4}
-            className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-105"
+            className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
             placeholder="Your Message"
             required
           ></textarea>
         </div>
-        <div className="md:col-span-2 text-center">
+
+        <div className="sm:col-span-2 text-center">
           <button
             type="submit"
             disabled={submitting}
@@ -200,86 +188,13 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
         </div>
       </form>
       <ToastContainer />
->>>>>>> a4bdaf8b511a5ea8ead82304c507c7cc0d6ee12c
     </div>
-
-    <div className="group">
-      <label htmlFor="email" className="block text-sm font-medium text-[#4DB6E2] mb-1">Email</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        value={form.email}
-        onChange={handleChange}
-        className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
-        placeholder="Your Email"
-        required
-      />
-    </div>
-
-    <div className="group">
-      <label htmlFor="contactNumber" className="block text-sm font-medium text-[#4DB6E2] mb-1">Contact Number</label>
-      <input
-        type="tel"
-        id="contactNumber"
-        name="contactNumber"
-        value={form.contactNumber}
-        onChange={handleNumberChange}
-        maxLength={10}
-        className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
-        placeholder="Your Contact Number"
-        required
-      />
-    </div>
-
-    <div className="group">
-      <label htmlFor="address" className="block text-sm font-medium text-[#4DB6E2] mb-1">Address</label>
-      <input
-        type="text"
-        id="address"
-        name="address"
-        value={form.address}
-        onChange={handleChange}
-        className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
-        placeholder="Your Address"
-        required
-      />
-    </div>
-
-    <div className="sm:col-span-2 group">
-      <label htmlFor="message" className="block text-sm font-medium text-[#4DB6E2] mb-1">Message</label>
-      <textarea
-        id="message"
-        name="message"
-        value={form.message}
-        onChange={handleChange}
-        rows={4}
-        className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
-        placeholder="Your Message"
-        required
-      ></textarea>
-    </div>
-
-    <div className="sm:col-span-2 text-center">
-      <button
-        type="submit"
-        disabled={submitting}
-        className="bg-[#4DB6E2] text-white font-medium py-3 px-8 rounded-lg transition-all duration-300 hover:bg-blue-700 hover:-translate-y-1 hover:shadow-lg disabled:opacity-70"
-      >
-        {submitting ? "Sending..." : "Send Message"}
-      </button>
-    </div>
-  </form>
-  <ToastContainer />
-</div>
   );
 
   return (
     <>
       {isPopup ? (
-        <div>
-          {formContent}
-        </div>
+        <div>{formContent}</div>
       ) : (
         <section id="contact" className="py-20 bg-blue-50">
           <div className="container mx-auto px-4">
