@@ -13,7 +13,6 @@ import Mac5 from "./components/Machinery/Mac5";
 import Mac6 from "./components/Machinery/Mac6";
 import Distributor from "./pages/Distributor";
 import Contact from "./components/Contact";
-import NotFound from "./components/NotFound";
 
 const App = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -77,8 +76,26 @@ const App = () => {
                 <Route path="/machinery/jriv" element={<Mac4 />} />
                 <Route path="/machinery/super501" element={<Mac5 />} />
                 <Route path="/machinery/anespadx" element={<Mac6 />} />
-                <Route path="*" element={<NotFound />} />
+                
             </Routes>
+
+            {/* Contact Popup - without black background, always visible */}
+            {showContactPopup && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
+                    <div className="bg-white rounded-lg p-6 relative w-full max-w-lg shadow-xl mx-4 pointer-events-auto">
+                        <button
+                            onClick={() => setShowContactPopup(false)}
+                            className="absolute -top-4 -right-4 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-md hover:bg-red-600 transition-colors z-50 text-xl font-bold"
+                        >
+                            ×
+                        </button>
+                        <Contact 
+                            isPopup={true} 
+                            onClose={() => setShowContactPopup(false)}
+                        />
+                    </div>
+                </div>
+            )}
 
             <ToastContainer />
         </div>
@@ -86,3 +103,5 @@ const App = () => {
 };
 
 export default App;
+
+
