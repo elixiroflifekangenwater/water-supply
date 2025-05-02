@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Mac4Img from "../../assets/Mac4.jpg";
-import Modal from "../modal";
 import Contact from "../Contact";
+
 const Mac4 = () => {
   const controls = useAnimation();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const onClose = () => setIsModalOpen(false);
+  const [showContactPopup, setShowContactPopup] = useState(false);
 
   useEffect(() => {
     controls.start("visible");
@@ -149,17 +148,29 @@ const Mac4 = () => {
         variants={buttonVariants}
         className="flex justify-center mt-10"
       >
-        <button onClick={() => setIsModalOpen(true)} className="bg-[#4DB6E2] hover:bg-[#3da7d5] text-white font-semibold py-3 px-8 rounded-full shadow-md transition transform hover:scale-105">
+        <button onClick={() => setShowContactPopup(true)} className="bg-[#4DB6E2] hover:bg-[#3da7d5] text-white font-semibold py-3 px-8 rounded-full shadow-md transition transform hover:scale-105">
           Contact Us
         </button>
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <button className='bg-gradient-to-r from-[#4DB6E2] to-blue-500 text-white hover:from-blue-600 hover:to-blue-700 transition-all duration-300 p-4 rounded-full hover:scale-110 shadow-lg active:scale-95 flex items-center justify-center absolute top-4 right-4 ring-2 ring-white/20 hover:ring-blue-300/50' onClick={onClose}>
-          <span className='text-xl font-semibold'>×</span>
-        </button>
-        {/* <ContactForm query="sd501" /> */}
-        <Contact query="jriv" />
-      </Modal>
       </motion.div>
+
+      {/* Contact Popup */}
+      {showContactPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
+          <div className="bg-white rounded-lg p-6 relative w-full max-w-lg shadow-xl mx-4 pointer-events-auto">
+            <button
+              onClick={() => setShowContactPopup(false)}
+              className="absolute -top-4 -right-4 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center shadow-md hover:bg-red-600 transition-colors z-50 text-xl font-bold"
+            >
+              ×
+            </button>
+            <Contact 
+              isPopup={true} 
+              onClose={() => setShowContactPopup(false)}
+              query="jriv"
+            />
+          </div>
+        </div>
+      )}
     </motion.div>
   );
 };
