@@ -101,7 +101,7 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
   };
 
   const formContent = (
-    <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg relative z-50 w-full">
+    <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg relative z-10 w-full">
       <h2 className="text-4xl font-bold text-center mb-12 animate-pulse text-[#4DB6E2] transition-all duration-500">Contact Us</h2>
       <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={handleSubmit}>
         <div className="relative group">
