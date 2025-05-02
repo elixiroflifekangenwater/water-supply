@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 
@@ -11,7 +11,14 @@ const machineryLinks = [
   { name: "Bathroom Filtration Anespa DX", path: "/machinery/anespadx" },
 ];
 
-const Navbar = ({ scrolled, dropdownOpen, setDropdownOpen, mobileMenuOpen, setMobileMenuOpen, mobileMachineOpen, setMobileMachineOpen, machineItems, scrollToSection, toggleMobileMenu }) => (
+const Navbar = ({ scrolled, dropdownOpen, setDropdownOpen, mobileMachineOpen, setMobileMachineOpen, machineItems, scrollToSection }) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  return (
   <header
     className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${scrolled ? "h-16 shadow-md" : "h-20"}`}
     style={{ backgroundColor: "#4DB6E2" }}
@@ -109,13 +116,44 @@ const Navbar = ({ scrolled, dropdownOpen, setDropdownOpen, mobileMenuOpen, setMo
               ))}
             </div>
           </li>
-          <li><button onClick={() => { scrollToSection('distributor'); setMobileMenuOpen(false); }} className="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 hover:text-[#4DB6E2] rounded-lg transition-colors duration-200">Become a Distributor</button></li>
-          <li><button onClick={() => { scrollToSection('services'); setMobileMenuOpen(false); }} className="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 hover:text-[#4DB6E2] rounded-lg transition-colors duration-200">Services</button></li>
-          <li><button onClick={() => { scrollToSection('contact'); setMobileMenuOpen(false); }} className="block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 hover:text-[#4DB6E2] rounded-lg transition-colors duration-200">Contact Us</button></li>
+          <li>
+            <NavLink
+              to="/distributor"
+              className={({ isActive }) =>
+                `block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 hover:text-[#4DB6E2] rounded-lg transition-colors duration-200 ${isActive ? 'font-bold underline' : ''}`
+              }
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Become a Distributor
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/home"
+              className={({ isActive }) =>
+                `block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 hover:text-[#4DB6E2] rounded-lg transition-colors duration-200 ${isActive ? 'font-bold underline' : ''}`
+              }
+              onClick={() => scrollToSection('services')}
+            >
+              Services
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/home"
+              className={({ isActive }) =>
+                `block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 hover:text-[#4DB6E2] rounded-lg transition-colors duration-200 ${isActive ? 'font-bold underline' : ''}`
+              }
+              onClick={() => scrollToSection('contact')}
+            >
+              Contact Us
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </div>
   </header>
 );
+}
 
 export default Navbar;
