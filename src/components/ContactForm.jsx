@@ -1,7 +1,7 @@
 import React from "react";
 import { ToastContainer, toast } from 'react-toastify';
 
-const ContactForm = ({ number, handleNumberChange }) => (
+const ContactForm = ({ query,number, handleNumberChange }) => (
   <section id="contact" className="py-20 bg-blue-50">
     <div className="container mx-auto px-4">
       <h2 className="text-4xl font-bold text-center mb-12 animate-pulse  text-[#4DB6E2] transition-all duration-500">Contact Us</h2>

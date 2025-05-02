@@ -4,13 +4,17 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/u/0/d/1ll7AUX9VraiJ9S89LtKUJWV4NSZho5hdNay3NUlfCo0/formResponse";
 
+<<<<<<< HEAD
 const Contact = ({ isPopup = false, onClose }) => {
+=======
+const Contact = ({ query = 'enquiry' }) => {
+>>>>>>> 51999170a3aae68e2888618438bd87250d541513
   const [form, setForm] = useState({
     name: '',
     email: '',
     contactNumber: '',
     address: '',
-    query: '',
+    query: query,
     message: ''
   });
   const [submitting, setSubmitting] = useState(false);
@@ -80,6 +84,10 @@ const Contact = ({ isPopup = false, onClose }) => {
     formData.append("entry.690186531", form.email); // Email
     formData.append("entry.1369128842", form.contactNumber); // Contact Number
     formData.append("entry.864243374", form.address); // Address
+<<<<<<< HEAD
+=======
+    formData.append("entry.545556729", form.query); // Query
+>>>>>>> 51999170a3aae68e2888618438bd87250d541513
     formData.append("entry.2011894093", form.message); // Message
 
     try {
