@@ -60,7 +60,7 @@ const NotFound = () => {
                 View Machines
               </Link>
               <Link
-                to="/contact"
+                to="/"
                 className="inline-block bg-white hover:bg-gray-50 text-gray-800 font-medium py-2 px-6 rounded-full border border-gray-300 transition hover:shadow-md"
               >
                 Contact Us
