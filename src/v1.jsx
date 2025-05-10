@@ -478,6 +478,7 @@ const V1 = () => {
         </section>
       </main>
 
+    
       {/* Footer */}
       <footer className="bg-blue-950 text-white py-12">
         <div className="container mx-auto px-4">
