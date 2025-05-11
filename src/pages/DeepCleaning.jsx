@@ -51,6 +51,7 @@ const DeepCleaning = () => {
                   <h2 className="text-xl font-semibold text-[#4DB6E2] mb-4">Cleaning Process:</h2>
                   <ul className="space-y-3">
                     {[
+                      "1 year free service",
                       "Submersible motor cleaning",
                       "Citric acid treatment",
                       "Filter inspection",

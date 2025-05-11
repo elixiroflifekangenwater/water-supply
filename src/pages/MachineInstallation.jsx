@@ -75,7 +75,7 @@ const MachineInstallation = () => {
                   <h2 className="text-xl font-semibold text-[#4DB6E2] mb-4">Maintenance Plan:</h2>
                   <ul className="space-y-3">
                     {[
-                      "1 Year Free Maintenance",
+                      "Paid Maintenance Plan",
                       "Regular check-ups",
                       "Performance optimization",
                       "Filter replacement service",
