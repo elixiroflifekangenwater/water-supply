@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Contact from "../Contact";
-import Mac3Image from "../../assets/mac3.jpg"; // Assuming
+import Mac3Image from "../../assets/Mac3.jpg"; // Assuming
 const Mac3 = () => {
   const controls = useAnimation();
 
