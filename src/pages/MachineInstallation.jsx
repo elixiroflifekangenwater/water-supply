@@ -102,9 +102,9 @@ const MachineInstallation = () => {
                 transition={{ delay: 1.6 }}
                 className="mt-8 text-center"
               >
-                <button className="bg-[#4DB6E2] hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                {/* <button className="bg-[#4DB6E2] hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
                   Schedule Installation
-                </button>
+                </button> */}
               </motion.div>
             </motion.div>
           </div>
