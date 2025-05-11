@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import Dis from "../assets/Dis.jpeg";
+import { FaCheckSquare } from "react-icons/fa";
 
 const Distributor = () => {
     const COMMISSION_DATA = [
@@ -204,8 +205,73 @@ const Distributor = () => {
                 </div>
             </section>
 
+            {/* Enagic Compensation Plan Highlights */}
+            <section className="py-12 px-4 md:px-16 bg-white">
+                <motion.div
+                    className="max-w-5xl mx-auto"
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                >
+                    <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">
+                        Enagic's Dynamically Designed Compensation Plan
+                    </h2>
+                    <p className="text-center text-lg mb-8 font-medium">
+                        Which offers you <span className="text-[#a259c6] font-bold">9 different ways</span> of earning income, is truly exciting for distributors.
+                    </p>
+                    <div className="flex flex-col md:flex-row gap-8 justify-center">
+                        {/* Left column */}
+                        <div className="bg-[#f9f9fa] rounded-xl shadow-lg p-6 flex-1 min-w-[260px]">
+                            <ul className="space-y-5">
+                                <li className="flex items-center gap-3">
+                                    <FaCheckSquare className="text-2xl text-[#a259c6]" />
+                                    <span className="text-lg font-medium">No sign-up fee</span>
+                                </li>
+                                <li className="flex items-center gap-3">
+                                    <FaCheckSquare className="text-2xl text-[#a259c6]" />
+                                    <span className="text-lg font-medium">No monthly qualifications<span className="text-xs align-super">*</span></span>
+                                </li>
+                                <li className="flex items-center gap-3">
+                                    <FaCheckSquare className="text-2xl text-[#a259c6]" />
+                                    <span className="text-lg font-medium">No stocking of inventory</span>
+                                </li>
+                                <li className="flex items-center gap-3">
+                                    <FaCheckSquare className="text-2xl text-[#a259c6]" />
+                                    <span className="text-lg font-medium">No annual renewal</span>
+                                </li>
+                            </ul>
+                        </div>
+                        {/* Right column */}
+                        <div className="bg-[#f9f9fa] rounded-xl shadow-lg p-6 flex-1 min-w-[260px]">
+                            <ul className="space-y-5">
+                                <li className="flex items-center gap-3">
+                                    <FaCheckSquare className="text-2xl text-[#a259c6]" />
+                                    <span className="text-lg font-medium">No time limits</span>
+                                </li>
+                                <li className="flex items-center gap-3">
+                                    <FaCheckSquare className="text-2xl text-[#a259c6]" />
+                                    <span className="text-lg font-medium">Accumulative sales</span>
+                                </li>
+                                <li className="flex items-center gap-3">
+                                    <FaCheckSquare className="text-2xl text-[#a259c6]" />
+                                    <span className="text-lg font-medium">International sponsoring</span>
+                                </li>
+                                <li className="flex items-center gap-3">
+                                    <FaCheckSquare className="text-2xl text-[#a259c6]" />
+                                    <span className="text-lg font-medium">Pays daily</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p className="text-xs text-gray-500 text-center mt-4">
+                        *Some exceptions may apply. Please contact us for details.
+                    </p>
+                </motion.div>
+            </section>
+
             {/* Compensation Plan Section */}
-            <section className="py-14 px-4 md:px-24 bg-[#f9f9fa]">
+            {/* <section className="py-14 px-4 md:px-24 bg-[#f9f9fa]">
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -220,10 +286,10 @@ const Distributor = () => {
                     
                     </div>
                 </motion.div>
-            </section>
+            </section> */}
 
             {/* Commission Structure Table (Demo) */}
-<section id="commission-section" className="py-16 px-2 md:px-10 bg-white">
+{/* <section id="commission-section" className="py-16 px-2 md:px-10 bg-white">
     <motion.div
         initial="hidden"
         animate={isVisible.commission ? "visible" : "hidden"}
@@ -322,14 +388,14 @@ const Distributor = () => {
             *This data is purely illustrative and does not represent any real earnings or sales figures.
         </p>
     </motion.div>
-</section>
+</section> */}
 
 
            
          
 
            {/* Additional Income Streams (Demo Version) */}
-<section id="benefits-section" className="py-16 px-4 md:px-24 bg-[#f9f9fa] max-w-7xl mx-auto">
+{/* <section id="benefits-section" className="py-16 px-4 md:px-24 bg-[#f9f9fa] max-w-7xl mx-auto">
     <motion.div
         initial="hidden"
         animate={isVisible.benefits ? "visible" : "hidden"}
@@ -406,7 +472,7 @@ const Distributor = () => {
             
         </div>
     </motion.div>
-</section>
+</section> */}
 
 
 

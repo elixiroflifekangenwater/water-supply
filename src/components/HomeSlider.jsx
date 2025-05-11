@@ -3,31 +3,38 @@ import "slick-carousel/slick/slick-theme.css";
 import React from "react";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
-
-
-// Enhanced styles with animations and navbar spacing
+import Slide1 from "../assets/SliderImages/Slide1.png";
+import Slide2 from "../assets/SliderImages/Slide2.png";
+import Slide3 from "../assets/SliderImages/Slide3.png";
+import Slide4 from "../assets/SliderImages/Slide4.png";
+import Slide5 from "../assets/SliderImages/Slide5.png";
+import Slide6 from "../assets/SliderImages/Slide6.png";
+import Slide7 from "../assets/SliderImages/Slide7.png";
+import Slide8 from "../assets/SliderImages/Slide8.png";
+import { Slide } from "react-toastify";
 const sliderStyles = `
   body {
     overflow-x: hidden;
   }
   .slider-container {
-    width: 100%;
-    height: calc(80vh - 64px); /* Account for navbar height */
+    width: 90%;
+    height: auto;
     overflow: hidden;
     position: relative;
-    margin: 64px 0 0 0; /* Top margin for navbar */
+    margin: 64px auto 0;
     padding: 0 0 48px 0;
     background: #fafafa;
   }
   .slider-container .slick-slider,
   .slider-container .slick-list,
   .slider-container .slick-track {
-    height: 100%;
+    height: auto;
   }
   .slider-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    max-height: 80vh;
+    object-fit: contain;
     display: block;
     margin: 0 auto;
     transform-origin: center center;
@@ -40,132 +47,184 @@ const sliderStyles = `
     width: 100%;
     display: flex !important;
     justify-content: center;
-    z-index: 2;
+    z-index: 20;
   }
   .slider-container .slick-dots li {
     margin: 0 8px;
     transition: transform 0.3s ease;
   }
   .slider-container .slick-dots li button:before {
-    font-size: 14px;
-    color: rgba(255,255,255,0.5);
-    opacity: 1;
-    transition: all 0.3s ease;
-  }
-  .slider-container .slick-dots li.slick-active {
-    transform: scale(1.4);
+    content: "•";
+    font-size: 24px;
+    color: white;
+    opacity: 0.7;
+    text-shadow: 0 0 3px rgba(0,0,0,0.5);
   }
   .slider-container .slick-dots li.slick-active button:before {
     color: white;
     opacity: 1;
+    transform: scale(1.2);
   }
   /* Custom arrows */
   .slick-prev, .slick-next {
-    width: 40px;
-    height: 40px;
-    z-index: 1;
+    width: 50px;
+    height: 50px;
+    z-index: 20;
     transition: all 0.3s ease;
+    background: rgba(255,255,255,0.9) !important;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  .slick-prev {
+    left: 10px;
+  }
+  .slick-next {
+    right: 10px;
   }
   .slick-prev:before, .slick-next:before {
-    font-size: 40px;
-    opacity: 0.7;
+    font-size: 30px;
+    color: black;
+    opacity: 0.8;
     transition: all 0.3s ease;
   }
   .slick-prev:hover:before, .slick-next:hover:before {
     opacity: 1;
     transform: scale(1.2);
   }
+  .slick-prev:hover, .slick-next:hover {
+    background: white !important;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
   @media (max-width: 768px) {
+    .slider-container,
+    .slider-container .slick-slider,
+    .slider-container .slick-list,
+    .slider-container .slick-track,
+    .slider-image {
+      height: 70vh;
+    }
     .slider-container {
-      height: calc(50vh - 64px);
+      width: 100%;
+      height: auto;
       padding-bottom: 32px;
     }
+    .slider-image {
+      max-height: 50vh;
+    }
     .slick-prev, .slick-next {
-      display: none !important;
+      display: block !important;
+      width: 40px;
+      height: 40px;
+    }
+    .slick-prev {
+      left: 5px;
+    }
+    .slick-next {
+      right: 5px;
+    }
+    .slider-container .slick-dots li button:before {
+      font-size: 20px;
     }
   }
   @media (max-width: 480px) {
+    .slider-container,
+    .slider-container .slick-slider,
+    .slider-container .slick-list,
+    .slider-container .slick-track,
+    .slider-image {
+      height: 50vh;
+    }
     .slider-container {
-      height: calc(40vh - 64px);
+      width: 98%;
+      height: auto;
       padding-bottom: 24px;
+    }
+    .slider-image {
+      max-height: 40vh;
     }
   }
 `;
 
 function SimpleSlider() {
-    const settings = {
-        dots: true,
-        autoplay: true,
-        speed: 500,
-        autoplaySpeed: 2000, // Increased slide duration to 5 seconds
-        cssEase: "cubic-bezier(0.645, 0.045, 0.355, 1)", // Smooth easing
-        arrows: true,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        initialSlide: 0,
-        adaptiveHeight: true,
-        pauseOnHover: true,
-        customPaging: i => (
-            <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: i * 0.1 }}
-                className="dot-indicator"
-            />
-        ),
-        responsive: [
-            {
-                breakpoint: 1024,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    infinite: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 600,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    };
+  const settings = {
+    dots: true,
+    autoplay: true,
+    speed: 500,
+    autoplaySpeed: 3000,
+    cssEase: "cubic-bezier(0.645, 0.045, 0.355, 1)",
+    arrows: true,
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    initialSlide: 0,
+    adaptiveHeight: false,
+    pauseOnHover: true,
+    customPaging: i => (
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ delay: i * 0.1 }}
+        className="dot-indicator"
+      />
+    ),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
 
-    return (
-        <>
-            <style>{sliderStyles}</style>
-            <div className="slider-container  m-11 bg-neutral-50">
-                <Slider {...settings} className="py-9 rounded-2xl">
-                    {[
-                        "https://enagic.co.in/wp-content/uploads/2018/01/newbanner_anespadx-04.png",
-                        "https://enagic.co.in/wp-content/uploads/2018/02/K8.jpg",
-                        "https://enagic.co.in/wp-content/uploads/2018/01/Platinum-3.jpg",
-                        "https://enagic.co.in/wp-content/uploads/2018/02/Super-501-3.jpg"
-                    ].map((img, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.8 }}
-                        >
-                            <img 
-                                src={img} 
-                                className="slider-image" 
-                                alt={`Slide ${index + 1}`} 
-                                style={{
-                                    padding: "0 40px", // Added side margins
-                                    boxSizing: "border-box"
-                                }}
-                            />
-                        </motion.div>
-                    ))}
-                </Slider>
-            </div>
-        </>
-    );
+  return (
+    <>
+      <style>{sliderStyles}</style>
+      <div className="slider-container mx-4 bg-neutral-50">
+        <Slider {...settings} className="py-9 rounded-2xl">
+          {[
+            Slide1,
+            Slide2,
+            Slide3,
+            Slide4,
+            Slide5,
+            Slide6,
+            Slide7,
+            Slide8
+
+          ].map((img, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8 }}
+            >
+              <img
+                src={img}
+                className="slider-image"
+                alt={`Slide ${index + 1}`}
+                style={{
+                  padding: "0 10px",
+                  boxSizing: "border-box"
+                }}
+              />
+            </motion.div>
+          ))}
+        </Slider>
+      </div>
+    </>
+  );
 }
 
 export default SimpleSlider;

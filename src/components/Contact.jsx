@@ -103,7 +103,7 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
   const formContent = (
     <div className="max-w-full md:max-w-2xl mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full">
       <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 animate-pulse text-[#4DB6E2] transition-all duration-500">
-        Contact Us
+       {isPopup ? 'Get Started' : 'Contact Us'} 
       </h2>
       <form className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6" onSubmit={handleSubmit}>
         <div className="group">

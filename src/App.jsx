@@ -13,6 +13,10 @@ import Mac5 from "./components/Machinery/Mac5";
 import Mac6 from "./components/Machinery/Mac6";
 import Distributor from "./pages/Distributor";
 import Contact from "./components/Contact";
+import Services from "./components/Services";
+import KangenDemo from "./pages/KangenDemo";
+import MachineInstallation from "./pages/MachineInstallation";
+import DeepCleaning from "./pages/DeepCleaning";
 
 const App = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -76,7 +80,10 @@ const App = () => {
                 <Route path="/machinery/jriv" element={<Mac4 />} />
                 <Route path="/machinery/super501" element={<Mac5 />} />
                 <Route path="/machinery/anespadx" element={<Mac6 />} />
-                
+                <Route path="/services" element={<Services />} />
+                <Route path="/services/kangen-demo" element={<KangenDemo />} />
+                <Route path="/services/machine-installation" element={<MachineInstallation />} />
+                <Route path="/services/deep-cleaning" element={<DeepCleaning />} />
             </Routes>
 
             {/* Contact Popup - without black background, always visible */}

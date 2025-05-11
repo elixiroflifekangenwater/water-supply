@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import img1 from "../assets/img1.png";
 import img2 from "../assets/img2.png";
 import img3 from "../assets/img3.png";
 
-const Services = ({ scrollToContact }) => (
+const Services = () => (
   <section id="services" className="py-20 bg-gray-50">
-    <div className="container mx-auto px-4">
+    <div className="container mx-auto px-5">
       <h2 className="text-3xl font-bold text-center mb-12 text-[#4DB6E2] animate-pulse ">Our Services</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {[
@@ -13,22 +14,26 @@ const Services = ({ scrollToContact }) => (
             image: img1,
             title: "Kangen Demo",
             description: "Our Sales representative will visit your residence to explain all about the benefits of Kangen Water Machine and educate you on operation and e-cleaning.",
-            extra: "Book Your Appointment Now!"
+            extra: "Book Your Appointment Now!",
+            link: "/services/kangen-demo"
           },
           {
             image: img2,
             title: "Machine Installation",
             description: "Get your Enagic Kangen Water Ionizer installed by your washbasin—sleek, swift, and ready in under an hour with flexible wall or platform mounting!",
-            extra: "1 Year Free Maintenance – Minimal Charges Thereafter"
+            extra: " Minimal Installation Charges", 
+            link: "/services/machine-installation"
           },
           {
             image: img3,
             title: "Deep Cleaning",
             description: "Annual deep cleaning service using submersible motor and citric acid to maintain optimal machine performance.",
-            extra: "Minimal Service Charges"
+            extra: "1 Year Free Service - Charges Thereafter",
+            link: "/services/deep-cleaning"
           }
         ].map((service, index) => (
-          <div
+          <Link
+            to={service.link}
             key={index}
             className="group bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ease-out hover:-translate-y-2 relative overflow-hidden flex flex-col h-full"
           >
@@ -55,16 +60,13 @@ const Services = ({ scrollToContact }) => (
                   </p>
                 )}
               </div>
-              <div className="text-center mt-auto pt-4">
-                <button
-                  onClick={scrollToContact}
-                  className="bg-[#4DB6E2] hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 w-full hover:scale-105 hover:shadow-lg transform origin-bottom"
-                >
-                  Contact Us
-                </button>
-              </div>
+              {/* <div className="text-center mt-auto pt-4">
+                <span className="bg-[#4DB6E2] hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 w-full inline-block hover:scale-105 hover:shadow-lg transform origin-bottom">
+                  View Details
+                </span>
+              </div> */}
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
