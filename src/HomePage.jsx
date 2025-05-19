@@ -4,7 +4,6 @@ import SimpleSlider from "./components/HomeSlider";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Services from "./components/Services";
-import Footer from "./components/Footer";
 import { scrollToSection, scrollToContact } from "./utils/scroll";
 import CertificatePage from "./components/Certificate";
 import { handleNumberChange as validateNumberChange } from "./utils/validation";
@@ -62,7 +61,7 @@ const HomePage = () => {
         <Contact />
       </main>
       <CertificatePage />
-      <Footer />
+      
     </div>
   );
 };

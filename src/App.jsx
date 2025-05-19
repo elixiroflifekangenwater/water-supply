@@ -17,6 +17,7 @@ import Services from "./components/Services";
 import KangenDemo from "./pages/KangenDemo";
 import MachineInstallation from "./pages/MachineInstallation";
 import DeepCleaning from "./pages/DeepCleaning";
+import Footer from "./components/Footer";
 
 const App = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -105,6 +106,8 @@ const App = () => {
             )}
 
             <ToastContainer />
+
+            <Footer/>
         </div>
     );
 };

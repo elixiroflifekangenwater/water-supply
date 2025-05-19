@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import img1 from "../assets/img1.png";
-
+import Video from "../assets/Video.mp4";
 const KangenDemo = () => {
   return (
     <motion.div 
@@ -17,7 +17,7 @@ const KangenDemo = () => {
           transition={{ delay: 0.2 }}
           className="max-w-4xl mx-auto bg-white rounded-xl shadow-2xl overflow-hidden"
         >
-          <div className="h-[500px] overflow-hidden relative">
+          <div className="h-[500px] overflow-hidden relative p-6 m-8">
             <motion.img
               initial={{ scale: 1.1 }}
               animate={{ scale: 1 }}
@@ -58,7 +58,7 @@ const KangenDemo = () => {
                 <div className="relative w-full pt-[56.25%] rounded-xl overflow-hidden shadow-lg">
                   <iframe
                     className="absolute top-0 left-0 w-full h-full"
-                    src="https://www.youtube.com/embed/IUxQNqWJWsk"
+                    src={Video}
                     title="Kangen Water Demo"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen

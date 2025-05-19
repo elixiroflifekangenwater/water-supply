@@ -505,7 +505,7 @@ const Mac5 = () => {
           onClick={() => setShowContactPopup(true)}
           className="bg-[#4DB6E2] hover:bg-[#3da7d5] text-white font-semibold py-3 px-8 rounded-full shadow-md transition transform hover:scale-105"
         >
-          Book Demo
+          Book a Demo
         </button>
       </motion.div>
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
-import Mac1Img from "../../assets/Mac1.jpg";
+import Mac1Img from "../../assets/Mac1.png";
 import Contact from "../Contact";
 
 const Mac1 = () => {
@@ -362,7 +362,7 @@ const Mac1 = () => {
           onClick={() => setShowContactPopup(true)}
           className="bg-[#4DB6E2] hover:bg-[#3da7d5] text-white font-semibold py-3 px-8 rounded-full shadow-md transition transform hover:scale-105"
         >
-          Book Demo
+          Book a Demo
         </button>
       </motion.div>
 

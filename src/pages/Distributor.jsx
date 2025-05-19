@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
+
 import { motion } from "framer-motion";
 import Dis from "../assets/Dis.jpeg";
 import { FaCheckSquare } from "react-icons/fa";
@@ -587,7 +587,7 @@ const Distributor = () => {
                 </div>
             </section>
 
-            <Footer/>
+           
         </main>
     );
 };

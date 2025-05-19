@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import Contact from "../Contact";
 import Mac6Img from "../../assets/Mac6.jpg"; 
-import Anespa from "../../assets/Anespa.jpg"; 
+import Anespa from "../../assets/Anespa.png"; 
 const Mac6 = () => {
   const controls = useAnimation();
   const [showContactPopup, setShowContactPopup] = useState(false);
@@ -491,7 +491,7 @@ const Mac6 = () => {
           onClick={() => setShowContactPopup(true)}
           className="bg-[#4DB6E2] hover:bg-[#3da7d5] text-white font-semibold py-3 px-8 rounded-full shadow-md transition transform hover:scale-105"
         >
-          Book Demo
+          Book a Demo
         </button>
       </motion.div>
 
