@@ -196,7 +196,7 @@ const Navbar = ({ scrolled, mobileMachineOpen, setMobileMachineOpen, machineItem
           </li>
           <li>
             <NavLink
-              to="/home"
+              to="/contact"
               className={({ isActive }) =>
                 `block w-full text-left py-2 px-4 text-gray-800 hover:bg-gray-100 hover:text-[#4DB6E2] rounded-lg transition-colors duration-200 ${isActive ? 'font-bold underline' : ''}`
               }
