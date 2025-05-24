@@ -102,9 +102,14 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
 
   const formContent = (
     <div className={`max-w-full mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full ${isPopup ? 'md:max-w-md' : 'md:max-w-2xl'}`}>
-      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 animate-pulse text-[#4DB6E2] transition-all duration-500">
+      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 sm:mb-6 animate-pulse text-[#4DB6E2] transition-all duration-500">
        {isPopup ? 'Get Started' : 'Contact Us'} 
       </h2>
+      {!isPopup && (
+        <p className="text-center text-gray-600 mb-6 sm:mb-10 px-2 sm:px-4">
+          Need help purchasing a Kangen Water machine? We're here to assist you! Please fill out the form below, and we'll respond to your inquiry promptly.
+        </p>
+      )}
       <form className="grid grid-cols-1 gap-4 sm:gap-6" onSubmit={handleSubmit}>
         <div className="group">
           <label htmlFor="name" className="block text-sm font-medium text-[#4DB6E2] mb-1">Name</label>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import {motion} from 'framer-motion';
 
@@ -18,6 +18,7 @@ const servicesLinks = [
 ];
 
 const Navbar = ({ scrolled, mobileMachineOpen, setMobileMachineOpen, machineItems, scrollToSection }) => {
+  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [machineryDropdownOpen, setMachineryDropdownOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
@@ -113,7 +114,7 @@ const Navbar = ({ scrolled, mobileMachineOpen, setMobileMachineOpen, machineItem
               </div>
             </div>
           </li>
-          <li><NavLink to="/home"><button onClick={() => scrollToSection('contact')} className="text-white opacity-80 hover:opacity-100 transition-all duration-200 py-2 px-3 rounded-lg hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-md">Contact Us</button></NavLink></li>
+          <li><NavLink to="/contact"><button onClick={() => scrollToSection('contact')} className="text-white opacity-80 hover:opacity-100 transition-all duration-200 py-2 px-3 rounded-lg hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-md">Contact Us</button></NavLink></li>
         </ul>
       </nav>
       {/* Mobile Menu Button */}
