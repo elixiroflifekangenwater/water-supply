@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import HomePage from "./HomePage";
 import Navbar from "./components/Navbar";
 import Mac1 from "./components/Machinery/Mac1";
@@ -14,19 +14,22 @@ import Mac6 from "./components/Machinery/Mac6";
 import Distributor from "./pages/Distributor";
 import Contact from "./components/Contact";
 import Services from "./components/Services";
+import DiscoverMore from "./pages/DiscoverMore";
+
+import Footer from "./components/Footer";
 import KangenDemo from "./pages/KangenDemo";
 import MachineInstallation from "./pages/MachineInstallation";
 import DeepCleaning from "./pages/DeepCleaning";
-import Footer from "./components/Footer";
-
 const App = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [mobileMachineOpen, setMobileMachineOpen] = useState(false);
     
-    // Force popup to be visible initially
+    // Show popup by default on homepage
     const [showContactPopup, setShowContactPopup] = useState(true);
+    const location = useLocation();
+    const isHomePage = location.pathname === '/' || location.pathname === '/home';
 
     // Manual trigger from any component
     const handleContactClick = () => {
@@ -82,13 +85,15 @@ const App = () => {
                 <Route path="/machinery/super501" element={<Mac5 />} />
                 <Route path="/machinery/anespadx" element={<Mac6 />} />
                 <Route path="/services" element={<Services />} />
-                <Route path="/services/kangen-demo" element={<KangenDemo />} />
-                <Route path="/services/machine-installation" element={<MachineInstallation />} />
-                <Route path="/services/deep-cleaning" element={<DeepCleaning />} />
+                <Route path="/services/kangendemo" element={<KangenDemo />} />
+                <Route path="/services/machineinstallation" element={<MachineInstallation />} />
+                <Route path="/services/deepcleaning" element={<DeepCleaning />} />
+                <Route path="/discover-more" element={<DiscoverMore />} />\
+                <Route path="/contact" element={<Contact />} />
             </Routes>
 
-            {/* Contact Popup - without black background, always visible */}
-            {showContactPopup && (
+            {/* Contact Popup - only on homepage */}
+            {isHomePage && showContactPopup && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center pointer-events-none">
                     <div className="bg-white rounded-lg p-6 relative w-full max-w-lg shadow-xl mx-4 pointer-events-auto">
                         <button

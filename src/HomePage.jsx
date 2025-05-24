@@ -58,7 +58,7 @@ const HomePage = () => {
         <About scrollToContact={scrollToContact} />
         <Services scrollToContact={scrollToContact} />
         {/* <ContactForm number={number} handleNumberChange={handleNumberChange} /> */}
-        <Contact />
+        {/* <Contact /> */}
       </main>
       <CertificatePage />
       

@@ -31,7 +31,7 @@ const Footer = () => (
             📧 Email: <a href="mailto:elixiroflifekangenwater@gmail.com" className="underline text-white">elixiroflifekangenwater@gmail.com</a>
           </p>
           <p className="text-white text-sm mb-2">
-            📞 Phone: <a href="tel:+91 8369532119" className="underline text-white">+91 8369532119</a>
+            📞 Phone: <a href="tel:+91 9220390182" className="underline text-white">+91 9220390182</a>
           </p>
           <p className="text-white text-sm">
             📍 Address:

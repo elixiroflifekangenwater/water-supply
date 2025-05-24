@@ -61,11 +61,11 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
       toast.error('Contact number must be 10 digits!', toastOptions);
       return false;
     }
-    if (!form.address.trim()) {
+    if (!isPopup && !form.address.trim()) {
       toast.error('Please enter your address!', toastOptions);
       return false;
     }
-    if (!form.message.trim()) {
+    if (!isPopup && !form.message.trim()) {
       toast.error('Please enter your message!', toastOptions);
       return false;
     }
@@ -101,11 +101,11 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
   };
 
   const formContent = (
-    <div className="max-w-full md:max-w-2xl mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full">
+    <div className={`max-w-full mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full ${isPopup ? 'md:max-w-md' : 'md:max-w-2xl'}`}>
       <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12 animate-pulse text-[#4DB6E2] transition-all duration-500">
        {isPopup ? 'Get Started' : 'Contact Us'} 
       </h2>
-      <form className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6" onSubmit={handleSubmit}>
+      <form className="grid grid-cols-1 gap-4 sm:gap-6" onSubmit={handleSubmit}>
         <div className="group">
           <label htmlFor="name" className="block text-sm font-medium text-[#4DB6E2] mb-1">Name</label>
           <input
@@ -149,33 +149,37 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
           />
         </div>
 
-        <div className="group">
-          <label htmlFor="address" className="block text-sm font-medium text-[#4DB6E2] mb-1">Address</label>
-          <input
-            type="text"
-            id="address"
-            name="address"
-            value={form.address}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
-            placeholder="Your Address"
-            required
-          />
-        </div>
+        {!isPopup && (
+          <div className="group">
+            <label htmlFor="address" className="block text-sm font-medium text-[#4DB6E2] mb-1">Address</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              value={form.address}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
+              placeholder="Your Address"
+              required
+            />
+          </div>
+        )}
 
-        <div className="sm:col-span-2 group">
-          <label htmlFor="message" className="block text-sm font-medium text-[#4DB6E2] mb-1">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            value={form.message}
-            onChange={handleChange}
-            rows={4}
-            className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
-            placeholder="Your Message"
-            required
-          ></textarea>
-        </div>
+        {!isPopup && (
+          <div className="group">
+            <label htmlFor="message" className="block text-sm font-medium text-[#4DB6E2] mb-1">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              value={form.message}
+              onChange={handleChange}
+              rows={4}
+              className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
+              placeholder="Your Message"
+              required
+            ></textarea>
+          </div>
+        )}
 
         <div className="sm:col-span-2 text-center">
           <button

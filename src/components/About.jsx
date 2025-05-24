@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import img4 from "../assets/img4.jpeg";
 
 const About = ({ scrollToContact }) => (
@@ -15,9 +16,9 @@ const About = ({ scrollToContact }) => (
             Our Kangen Water machines use advanced electrolysis technology to transform ordinary tap water into hydrogen-rich,
             alkaline water that many believe offers significant health benefits.
           </p>
-          <button onClick={scrollToContact} className="bg-[#4DB6E2] hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-300">
+          <Link to="/discover-more" className="inline-block bg-[#4DB6E2] hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-300">
             Discover More
-          </button>
+          </Link>
         </div>
         <div className="md:w-1/2">
           <div className="rounded-lg overflow-hidden shadow-lg">
