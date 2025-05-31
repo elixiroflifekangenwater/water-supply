@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/u/0/d/1ll7AUX9VraiJ9S89LtKUJWV4NSZho5hdNay3NUlfCo0/formResponse";
 
-const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
+const Contact = ({ isPopup = false, onClose, query = 'enquiry', pageTitle = 'Get in Touch' }) => {
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -16,15 +16,27 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
 
   const [submitting, setSubmitting] = useState(false);
 
-  const toastOptions = {
-    position: "top-center",
-    autoClose: 3000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "colored"
+  const showToast = (message, type = 'info') => {
+    const toastOptions = {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored"
+    };
+
+    // Clear any existing toasts before showing a new one
+    toast.dismiss();
+
+    if (type === 'success') {
+      toast.success(message, toastOptions);
+    } else if (type === 'error') {
+      toast.error(message, toastOptions);
+    } else {
+      toast.info(message, toastOptions);
+    }
   };
 
   const handleChange = (e) => {
@@ -36,37 +48,37 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
     if (/^\d*$/.test(value)) {
       setForm({ ...form, contactNumber: value });
     } else {
-      toast.error('Please enter numeric value only!', toastOptions);
+      showToast('Please enter numeric value only!', 'error');
     }
   };
 
   const validateForm = () => {
     if (!form.name.trim()) {
-      toast.error('Please enter your name!', toastOptions);
+      showToast('Please enter your name!', 'error');
       return false;
     }
     if (!form.email.trim()) {
-      toast.error('Please enter your email!', toastOptions);
+      showToast('Please enter your email!', 'error');
       return false;
     }
     if (!/^\S+@\S+\.\S+$/.test(form.email)) {
-      toast.error('Please enter a valid email address!', toastOptions);
+      showToast('Please enter a valid email address!', 'error');
       return false;
     }
     if (!form.contactNumber.trim()) {
-      toast.error('Please enter your contact number!', toastOptions);
+      showToast('Please enter your contact number!', 'error');
       return false;
     }
     if (!/^\d{10}$/.test(form.contactNumber)) {
-      toast.error('Contact number must be 10 digits!', toastOptions);
+      showToast('Contact number must be 10 digits!', 'error');
       return false;
     }
     if (!isPopup && !form.address.trim()) {
-      toast.error('Please enter your address!', toastOptions);
+      showToast('Please enter your address!', 'error');
       return false;
     }
     if (!isPopup && !form.message.trim()) {
-      toast.error('Please enter your message!', toastOptions);
+      showToast('Please enter your message!', 'error');
       return false;
     }
     return true;
@@ -74,7 +86,11 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    
+    if (!validateForm()) {
+      return;
+    }
+    
     setSubmitting(true);
 
     const formData = new FormData();
@@ -91,19 +107,37 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry' }) => {
         mode: "no-cors",
         body: formData,
       });
-      toast.success("Our Team Will Contact You Shortly", toastOptions);
-      setForm({ name: '', email: '', contactNumber: '', address: '', query: query, message: '' });
-      if (onClose) onClose();
+      
+      // Show single success message
+      showToast('Thank you! Our team will contact you shortly.', 'success');
+      
+      // Reset form
+      setForm({ 
+        name: '', 
+        email: '', 
+        contactNumber: '', 
+        address: '', 
+        query: query, 
+        message: '' 
+      });
+      
+      // Close the popup if it's in a modal
+      if (onClose) {
+        setTimeout(() => onClose(), 2000);
+      }
+      
     } catch (error) {
-      toast.error("Failed to send message. Please try again later.", toastOptions);
+      console.error('Form submission error:', error);
+      showToast('Failed to send message. Please try again or call us directly.', 'error');
+    } finally {
+      setSubmitting(false);
     }
-    setSubmitting(false);
   };
 
   const formContent = (
     <div className={`max-w-full mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full ${isPopup ? 'md:max-w-md' : 'md:max-w-2xl'}`}>
       <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 sm:mb-6 animate-pulse text-[#4DB6E2] transition-all duration-500">
-       {isPopup ? 'Get Started' : 'Contact Us'} 
+       {pageTitle}
       </h2>
       {!isPopup && (
         <p className="text-center text-gray-600 mb-6 sm:mb-10 px-2 sm:px-4">

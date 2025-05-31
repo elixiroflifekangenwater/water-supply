@@ -36,7 +36,9 @@ const Footer = () => (
           <p className="text-white text-sm">
             📍 Address:
             <span className="ml-4">
-            C-126,Industrial Area,Phase 1 , Naraina, Delhi 110028
+            C-126,Industrial Area,Phase 1 , 
+            <br />
+            <span className="ml-5">Naraina, Delhi 110028</span>
             </span>
           </p>
         </div>
@@ -78,7 +80,7 @@ const Footer = () => (
               <FaLinkedin size={24} />
             </a>
             <a 
-              href="https://twitter.com" 
+              href="https://x.com/sehgal_sum40499?t=BgpuE22muNLDuyI5AKWHtQ&s=09" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-white hover:text-[#4DB6E2] transition-colors duration-300"

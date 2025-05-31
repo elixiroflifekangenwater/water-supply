@@ -15,21 +15,21 @@ const Services = () => (
             title: "Kangen Demo",
             description: "Our Sales representative will visit your residence to explain all about the benefits of Kangen Water Machine and educate you on operation and e-cleaning.",
             extra: "Book Your Appointment Now!",
-            link: "/services/kangen-demo"
+            link: "/services/kangendemo"
           },
           {
             image: img2,
             title: "Machine Installation",
             description: "Get your Enagic Kangen Water Ionizer installed by your washbasin—sleek, swift, and ready in under an hour with flexible wall or platform mounting!",
             extra: " Minimal Installation Charges", 
-            link: "/services/machine-installation"
+            link: "/services/machineinstallation"
           },
           {
             image: img3,
             title: "Deep Cleaning",
             description: "Annual deep cleaning service using submersible motor and citric acid to maintain optimal machine performance.",
             extra: "1 Year Free Service - Charges Thereafter",
-            link: "/services/deep-cleaning"
+            link: "/services/deepcleaning"
           }
         ].map((service, index) => (
           <Link
@@ -54,11 +54,11 @@ const Services = () => (
                 <p className="text-gray-600 mb-4 flex-grow transition-colors duration-300 group-hover:text-gray-800">
                   {service.description}
                 </p>
-                {service.extra && (
+                {/* {service.extra && (
                   <p className="text-center text-sm text-[#4DB6E2] font-medium mb-4">
                     {service.extra}
                   </p>
-                )}
+                )} */}
               </div>
               {/* <div className="text-center mt-auto pt-4">
                 <span className="bg-[#4DB6E2] hover:bg-blue-600 text-white font-medium py-2 px-6 rounded-lg transition-all duration-300 w-full inline-block hover:scale-105 hover:shadow-lg transform origin-bottom">
