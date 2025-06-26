@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/u/0/d/1ll7AUX9VraiJ9S89LtKUJWV4NSZho5hdNay3NUlfCo0/formResponse";
+const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/u/2/d/198Y55Wli7Sj6jciZGF-oMabKc9MS5Ss6O1qtkn5e6wQ/formResponse";
 
 const Contact = ({ isPopup = false, onClose, query = 'enquiry', pageTitle = 'Get in Touch' }) => {
   const [form, setForm] = useState({
@@ -94,12 +94,12 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry', pageTitle = 'Get
     setSubmitting(true);
 
     const formData = new FormData();
-    formData.append("entry.98504594", form.name);            // Name
-    formData.append("entry.690186531", form.email);          // Email
-    formData.append("entry.1369128842", form.contactNumber); // Contact Number
-    formData.append("entry.864243374", form.address);        // Address
-    formData.append("entry.545556729", form.query);          // Query
-    formData.append("entry.2011894093", form.message);       // Message
+    formData.append("entry.1751663619", form.contactNumber);  // Contact-Number
+    formData.append("entry.1636520389", form.address);        // Address
+    formData.append("entry.1391655276", form.query);          // Query
+    formData.append("entry.769728327", form.name);            // Name
+    formData.append("entry.1813797865", form.email);          // Email
+    formData.append("entry.1709919803", form.message);        // Message
 
     try {
       await fetch(GOOGLE_FORM_ACTION, {

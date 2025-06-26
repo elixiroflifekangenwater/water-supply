@@ -54,7 +54,7 @@ const Navbar = ({ scrolled, mobileMachineOpen, setMobileMachineOpen, machineItem
       {/* Desktop Navigation */}
       <nav className="hidden md:block">
         <ul className="flex space-x-8">
-          <li><NavLink to="/home"><button onClick={() => scrollToSection('home')} className="text-white opacity-80 hover:opacity-100 transition-all duration-200 py-2 px-3 rounded-lg hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-md">Home</button></NavLink></li>
+          <li><NavLink to="/"><button onClick={() => scrollToSection('home')} className="text-white opacity-80 hover:opacity-100 transition-all duration-200 py-2 px-3 rounded-lg hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-md">Home</button></NavLink></li>
           <li className="relative group">
             <button
               className="text-white opacity-80 hover:opacity-100 transition-all duration-200 py-2 px-3 rounded-lg hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-md"
