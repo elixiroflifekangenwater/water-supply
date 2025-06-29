@@ -11,7 +11,13 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry', pageTitle = 'Get
     contactNumber: '',
     address: '',
     query: query,
-    message: ''
+    message: '',
+    waterQualityImportance: '',
+    familyIllness: '',
+    waterQualities: '',
+    phAwareness: '',
+    alkalinityBelief: '',
+    ionizerInterest: ''
   });
 
   const [submitting, setSubmitting] = useState(false);
@@ -100,6 +106,16 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry', pageTitle = 'Get
     formData.append("entry.769728327", form.name);            // Name
     formData.append("entry.1813797865", form.email);          // Email
     formData.append("entry.1709919803", form.message);        // Message
+    
+    // Additional fields for homepage form only
+    if (!isPopup) {
+      formData.append("entry.1136388333", form.waterQualityImportance);  // Water quality importance
+      formData.append("entry.1806172113", form.familyIllness);           // Family illness
+      formData.append("entry.1305439477", form.waterQualities);          // Water qualities
+      formData.append("entry.1169780326", form.phAwareness);             // PH awareness
+      formData.append("entry.1210444564", form.alkalinityBelief);        // Alkalinity belief
+      formData.append("entry.1056712023", form.ionizerInterest);         // Ionizer interest
+    }
 
     try {
       await fetch(GOOGLE_FORM_ACTION, {
@@ -118,7 +134,13 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry', pageTitle = 'Get
         contactNumber: '', 
         address: '', 
         query: query, 
-        message: '' 
+        message: '',
+        waterQualityImportance: '',
+        familyIllness: '',
+        waterQualities: '',
+        phAwareness: '',
+        alkalinityBelief: '',
+        ionizerInterest: ''
       });
       
       // Close the popup if it's in a modal
@@ -133,6 +155,49 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry', pageTitle = 'Get
       setSubmitting(false);
     }
   };
+
+  const renderRatingQuestion = (name, label, value) => (
+    <div className="group">
+      <label className="block text-sm font-medium text-[#4DB6E2] mb-2">{label}</label>
+      <div className="flex gap-2">
+        {[1, 2, 3, 4, 5].map((rating) => (
+          <button
+            key={rating}
+            type="button"
+            onClick={() => setForm({ ...form, [name]: rating.toString() })}
+            className={`w-10 h-10 rounded-full border-2 transition-all duration-200 ${
+              value === rating.toString()
+                ? 'bg-[#4DB6E2] text-white border-[#4DB6E2]'
+                : 'bg-white text-gray-600 border-gray-300 hover:border-[#4DB6E2]'
+            }`}
+          >
+            {rating}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
+  const renderYesNoQuestion = (name, label, value) => (
+    <div className="group">
+      <label className="block text-sm font-medium text-[#4DB6E2] mb-2">{label}</label>
+      <div className="flex gap-4">
+        {['Yes', 'No'].map((option) => (
+          <label key={option} className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              name={name}
+              value={option}
+              checked={value === option}
+              onChange={handleChange}
+              className="text-[#4DB6E2] focus:ring-[#4DB6E2]"
+            />
+            <span className="text-sm">{option}</span>
+          </label>
+        ))}
+      </div>
+    </div>
+  );
 
   const formContent = (
     <div className={`max-w-full mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full ${isPopup ? 'md:max-w-md' : 'md:max-w-2xl'}`}>
@@ -218,6 +283,34 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry', pageTitle = 'Get
               required
             ></textarea>
           </div>
+        )}
+
+        {/* Additional fields for homepage form only */}
+        {!isPopup && (
+          <>
+            {renderRatingQuestion('waterQualityImportance', 'How important is water quality to you?', form.waterQualityImportance)}
+            
+            {renderYesNoQuestion('familyIllness', 'Any illness in family?', form.familyIllness)}
+            
+            <div className="group">
+              <label htmlFor="waterQualities" className="block text-sm font-medium text-[#4DB6E2] mb-1">What qualities do you look for in drinking water?</label>
+              <input
+                type="text"
+                id="waterQualities"
+                name="waterQualities"
+                value={form.waterQualities}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
+                placeholder="e.g., purity, taste, health benefits"
+              />
+            </div>
+            
+            {renderRatingQuestion('phAwareness', 'How aware are you of the PH levels in water?', form.phAwareness)}
+            
+            {renderRatingQuestion('alkalinityBelief', 'Do you believe that alkalinity in water contributes to health?', form.alkalinityBelief)}
+            
+            {renderRatingQuestion('ionizerInterest', 'How interested are you in learning about water ionizers?', form.ionizerInterest)}
+          </>
         )}
 
         <div className="sm:col-span-2 text-center">
