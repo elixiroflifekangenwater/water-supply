@@ -210,6 +210,35 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry', pageTitle = 'Get
         </p>
       )}
       <form className="grid grid-cols-1 gap-4 sm:gap-6" onSubmit={handleSubmit}>
+        
+        {/* Additional fields for homepage form only - MOVED TO TOP */}
+        {!isPopup && (
+          <>
+            {renderRatingQuestion('waterQualityImportance', 'How important is water quality to you?', form.waterQualityImportance)}
+            
+            {renderYesNoQuestion('familyIllness', 'Any illness in family?', form.familyIllness)}
+            
+            <div className="group">
+              <label htmlFor="waterQualities" className="block text-sm font-medium text-[#4DB6E2] mb-1">What qualities do you look for in drinking water?</label>
+              <input
+                type="text"
+                id="waterQualities"
+                name="waterQualities"
+                value={form.waterQualities}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
+                placeholder="e.g., purity, taste, health benefits"
+              />
+            </div>
+            
+            {renderRatingQuestion('phAwareness', 'How aware are you of the PH levels in water?', form.phAwareness)}
+            
+            {renderRatingQuestion('alkalinityBelief', 'Do you believe that alkalinity in water contributes to health?', form.alkalinityBelief)}
+            
+            {renderRatingQuestion('ionizerInterest', 'How interested are you in learning about water ionizers?', form.ionizerInterest)}
+          </>
+        )}
+
         <div className="group">
           <label htmlFor="name" className="block text-sm font-medium text-[#4DB6E2] mb-1">Name</label>
           <input
@@ -283,34 +312,6 @@ const Contact = ({ isPopup = false, onClose, query = 'enquiry', pageTitle = 'Get
               required
             ></textarea>
           </div>
-        )}
-
-        {/* Additional fields for homepage form only */}
-        {!isPopup && (
-          <>
-            {renderRatingQuestion('waterQualityImportance', 'How important is water quality to you?', form.waterQualityImportance)}
-            
-            {renderYesNoQuestion('familyIllness', 'Any illness in family?', form.familyIllness)}
-            
-            <div className="group">
-              <label htmlFor="waterQualities" className="block text-sm font-medium text-[#4DB6E2] mb-1">What qualities do you look for in drinking water?</label>
-              <input
-                type="text"
-                id="waterQualities"
-                name="waterQualities"
-                value={form.waterQualities}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-blue-200 rounded-lg bg-white text-blue-800 focus:ring-2 focus:ring-blue-300 text-sm hover:shadow-md hover:scale-[1.01] transition-transform"
-                placeholder="e.g., purity, taste, health benefits"
-              />
-            </div>
-            
-            {renderRatingQuestion('phAwareness', 'How aware are you of the PH levels in water?', form.phAwareness)}
-            
-            {renderRatingQuestion('alkalinityBelief', 'Do you believe that alkalinity in water contributes to health?', form.alkalinityBelief)}
-            
-            {renderRatingQuestion('ionizerInterest', 'How interested are you in learning about water ionizers?', form.ionizerInterest)}
-          </>
         )}
 
         <div className="sm:col-span-2 text-center">
